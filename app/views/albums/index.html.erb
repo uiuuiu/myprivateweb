@@ -1,0 +1,9 @@
+<br><br><br>
+<%= link_to "New", new_user_profile_album_path(current_user, @this_profile) if current_user && current_user.id == @this_user.id %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<br><br><br>
+<h1>Albums</h1>
+<div id="reviews">
+ <%= render :partial => @this_profile.albums %>
+</div>
+<%= link_to 'Back', user_profile_path(@this_user, @this_profile) %>

@@ -1,0 +1,29 @@
+<%= form_for [@profile, @profile.albums.build], remote: true do |f| %>
+    <% if @dish.errors.any? %>
+     <div class="alert alert-danger">
+       <h4>There are <%= pluralize(@profile.errors.count, "error") %>.</h4>
+       <ul>
+         <% @profile.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+   <%= form_group_tag(@profile.errors[:body]) do %>
+     <%= f.label :body %>
+     <%= f.text_area :body, rows: 1, class: 'form-control', placeholder: "Enter comment" %>
+   <% end %>
+   <div class="form-group">
+     <%= f.submit "Save", class: 'btn btn-success' %>
+   </div>
+ <% end %>
+
+
+ <h3 >Albums</h3>
+    
+<% @profile.albums.each do |album| %>
+  <td><td><strong><%= album.albname %>:</strong>
+  <%= album.created_at %><br>
+  <% if current_user.present?%>
+  <%= link_to 'Remove', [@profile,album], method: :delete, data: { confirm: 'Are you sure?' } if current_user.role_id==1 or current_user && current_user.id == album.user_id %><br>
+<% end%>

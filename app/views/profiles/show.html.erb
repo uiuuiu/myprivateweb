@@ -1,0 +1,45 @@
+<br>
+<br>
+<br>
+<p>
+<%= link_to "Show", user_profile_path(@this_user, @this_user_profile) %>
+<%= link_to "Comment", user_profile_comments_path(@this_user, @this_user_profile) %>
+<%= link_to "Album", user_profile_albums_path(@this_user, @this_user_profile) %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @this_user_profile.name %>
+</p>
+<p>
+  <strong>Avatar:</strong>
+  <%= image_tag(@this_user_profile.avatar_url, :width => 50) if @this_user_profile.avatar.present? %>
+</p>
+<p>
+  <strong>Age:</strong>
+  <%= @this_user_profile.age %>
+</p>
+
+<p>
+  <strong>Profession:</strong>
+  <%= @this_user_profile.profession %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @this_user_profile.exp %>  
+</p>
+
+<p>
+  <strong>Hobbies:</strong>
+  <%= @this_user_profile.hobbies %>  
+</p>
+
+<p>
+  <strong>Decription:</strong>
+  <%= @this_user_profile.desc %>  
+</p>
+<% if current_user %>
+<%= link_to "Edit", edit_user_profile_path(current_user, @this_user_profile) if current_user.id == @this_user.id %>
+<% end %>
+<%= link_to 'Back', user_profiles_path(@this_user_profile), class: "col-md-6" %> 
+<br>

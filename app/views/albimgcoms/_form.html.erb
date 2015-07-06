@@ -1,0 +1,47 @@
+<%= form_for [@album, @album.albimgcoms.build], remote: true do |f| %>
+    <% if @dish.errors.any? %>
+     <div class="alert alert-danger">
+       <h4>There are <%= pluralize(@album.errors.count, "error") %>.</h4>
+       <ul>
+         <% @album.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+   <%= form_group_tag(@album.errors[:body]) do %>
+     <%= f.label :body %>
+     <%= f.text_area :body, rows: 1, class: 'form-control', placeholder: "Enter comment" %>
+   <% end %>
+   <div class="form-group">
+     <%= f.submit "Save", class: 'btn btn-success' %>
+   </div>
+ <% end %>
+
+
+ <h3 >Comments</h3>
+    
+<% @album.albimgcoms.each do |comment| %>
+  <td><td><strong><%= Profile.find_by(id: comment.profle_id).name %>:</strong>
+  <%= comment.content %><br>
+  <% if current_user.present?%>
+  <%= link_to 'Remove', [@album,comment], method: :delete, data: { confirm: 'Are you sure?' } if current_user.role_id==1 or current_user && current_user.id == comment.user_id %><br>
+  <%end%>
+<% end %>
+<% if current_user.present?%>
+  <h2>Add a comment:</h2>
+    <div class="widget-area no-padding blank">
+     <div class="status-upload">
+   <%= form_for([@album, @album.albimgcoms.build]) do |f| %>
+    <p>
+      <%= f.label :comment%><br>
+      <%= f.text_area :comment %>
+    </p>   
+
+    <p><%= f.submit class: "btn btn-success green" %></p>
+  <% end %>
+  </div>
+  </div>
+<% else%>
+  <p><%= link_to "Please sign in to comment!", new_user_session_path%><p>
+<% end%>

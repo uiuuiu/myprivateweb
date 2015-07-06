@@ -1,0 +1,11 @@
+<div id="text_comment">
+<div class="review_<%=h albimgcom.id %>">
+<% if !Albimgcom.find_by_id(albimgcom.id).nil? %>
+  <strong><%=Profile.find_by_user_id(albimgcom.user_id).name %>: </strong>
+  <%=h albimgcom.content %><br>
+  <% if current_user.present? %>
+  <%= link_to 'Remove', user_profile_album_albimgcom_path(@user, @profile, @album, albimgcom, :format => :js),:remote => true, id: "delete", method: :delete if current_user.id == albimgcom.user_id %>
+  <% end %>
+  <% end %>
+</div>
+</div>

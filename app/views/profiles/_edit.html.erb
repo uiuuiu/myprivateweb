@@ -1,0 +1,54 @@
+<%= form_for(@profile, :html => {:class => "form-horizontal center", :multipart => true}, url: user_profile_path(current_user, @profile)) do |f| %>
+		<% @profile.user_id = current_user.id %>
+      <div class="form-group">
+        <%= f.label :name, "Name:", class: "col-md-3 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :avatar, "Avatar:", class: "col-md-3 control-label" %>
+        <div class="col-md-8">
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :age, "Age:", class: "col-md-3 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :age, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :profession, "Profession:", class: "col-md-3 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_area :profession, class: "form-control" %>
+        </div>
+      </div>
+     <div class="form-group">
+        <%= f.label :exp, "Experience:", class: "col-md-3 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_area :exp, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :hobbies, "Hobbies:", class: "col-md-3 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_area :hobbies, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :desc, "Desciption:", class: "col-md-3 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_area :desc, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+      <div class="col-md-6"></div>
+      <%= f.submit "Create", class: "btn btn-primary" %>  
+      </div>
+ <% end %>
+<div class="form-group">
+      <div class="col-md-6"></div>
+      <%= link_to 'Back', user_profiles_path(current_user), class: "col-md-6" %> 
+</div>

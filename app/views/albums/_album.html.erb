@@ -1,0 +1,13 @@
+<div id="text_comment">
+<div class="review_<%=h album.id %>">
+<% if !Album.find_by_id(album.id).nil? %>
+  <strong><%=album.albname %>: </strong>
+  <%=h album.desc %><br>
+  <%=h album.created_at %><br>
+  <% if current_user.present? %>
+  <%= link_to 'Remove', user_profile_album_path(@this_user, @this_profile, album, :format => :js),:remote => true, id: "delete", method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == (Profile.find_by_id(album.profile_id)).user_id %>
+   <%= link_to 'Show', user_profile_album_path(@this_user, @this_profile, album) %>
+  <% end %>
+  <% end %>
+</div>
+</div>

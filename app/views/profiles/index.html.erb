@@ -1,0 +1,13 @@
+<br><br><br>
+<% @profile_list.each do |u| %>
+<p>
+  <strong>Name:</strong>
+  <%= u.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= u.age %>
+</p>
+<p><%= link_to "Edit", edit_user_profile_path(current_user, u) if current_user && current_user.id == u.user_id %> <%= link_to "Show", user_profile_path(@user, u) %> <%= link_to "Remove", user_profile_path(current_user, u), method: :delete, data: { confirm: 'Are you sure?' } if current_user && current_user.id == u.user_id %></p>
+<% end %>

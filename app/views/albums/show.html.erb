@@ -1,0 +1,10 @@
+<p>
+  <strong>Album: </strong>
+  <%= @this_album.albname %>
+</p>
+
+<% @albumimages.each do |p| %>
+  <%= image_tag p.imgname_url %>
+  <%= link_to "Edit Photo", edit_user_profile_album_path(@this_user, @this_profile, @this_album) if current_user && current_user.id == @this_user.id%>
+<% end %>
+<%= link_to 'Back', user_profile_albums_path %>

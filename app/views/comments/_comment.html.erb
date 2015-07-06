@@ -1,0 +1,11 @@
+<div id="text_comment">
+<div class="review_<%=h comment.id %>">
+<% if !Comment.find_by_id(comment.id).nil? %>
+  <strong><%=Profile.find_by_user_id(comment.user_id).name %>: </strong>
+  <%=h comment.content %><br>
+  <% if current_user.present? %>
+  <%= link_to 'Remove', user_profile_comment_path(@user, @profile, comment, :format => :js),:remote => true, id: "delete", method: :delete if current_user.id == comment.user_id %>
+  <% end %>
+  <% end %>
+</div>
+</div>

@@ -1,0 +1,22 @@
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<br><br><br>
+<h1>Comments</h1>
+<div id="reviews">
+ <%= render :partial => @profile.comments %>
+</div>
+
+<% if current_user.present?%>
+  <div id="comment">
+   <%= form_for([@user, @profile, @profile.comments.build]) do |f| %>
+    <p>
+     <br>
+      <%= f.text_area :content, id: "texarea_comment" %>
+    </p>   
+
+    <p><%= f.submit "Create comment",  id: "botton", class: "btn btn-success green" %></p>
+  <% end %>
+  </div>
+<% else%>
+  <p><%= link_to "Please sign in to comment!", new_user_session_path%><p>
+<% end%>
+<%= link_to 'Back', user_profile_path(@user,@profile), class: "col-md-6" %> 
