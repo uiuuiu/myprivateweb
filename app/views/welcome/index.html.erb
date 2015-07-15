@@ -11,7 +11,8 @@
 <link href="css/main.css" rel="stylesheet">
 <style>
 .post-body img {
-box-shadow: 0px 0px 15px #000; /* Shadow */
+box-shadow: 0px 0px 15px 15px white; /* Shadow */
+color: white;
 border-radius: 50%; /* Rounded border */
 border:0;
 padding:0;
@@ -20,7 +21,7 @@ padding:0;
 -o-transition: all 1s;
 }
 .post-body img:hover {
-box-shadow: 0; /* With this we remove the shadow (value 0) */
+box-shadow: 0 white; /* With this we remove the shadow (value 0) */
 border-radius: 0; /* This removes the border roundness (value 0) */
 -moz-transition: all 1s;
 -webkit-transition: all 1s;
@@ -71,7 +72,7 @@ jQuery(document).ready(function() {
 
     jQuery('.back-to-top').click(function(event) {
         event.preventDefault();
-        jQuery('html, body').animate({scrollTop: $("#point1").offset().top}, duration);
+        jQuery('html, body').animate({scrollTop: $("#point1").offset().top -30 }, duration);
         return false;
     })
 });
@@ -88,7 +89,7 @@ jQuery(document).ready(function() {
 </ol>
 <!-- Wrapper for slides -->
 <div class="carousel-inner" role="listbox" style="witdh: 90%">
-<div class="item active" style="background-image: url(<%= asset_path "company.jpg" %>); width: 100%; height: 600px">
+<div class="item active" style="width: 100%; height: 600px; background-repeat: no-repeat; background-size: 100%">
 <%= link_to user_profile_path(@user_last_list[0], @profile_list[0]) do %>
 	<div class="container">
                         <div class="row slide-margin">
@@ -119,10 +120,10 @@ jQuery(document).ready(function() {
                         </div>
                     </div>
 <% end %>
-<div class="carousel-caption">Newest Profile
+<div class="carousel-caption" style="color: red;">Newest Profile
 </div>
 </div>
-<div class="item" style="background-image: url(<%= asset_path "company.jpg" %>); width: 100%; height: 600px;">
+<div class="item" style="width: 100%; height: 600px; background-repeat: no-repeat; background-size: 100%">
 <%= link_to user_profile_path(@user_last_list[1], @profile_list[1]) do %>
 	<div class="container">
                         <div class="row slide-margin">
@@ -153,11 +154,11 @@ jQuery(document).ready(function() {
                         </div>
                     </div>
 <% end %>2
-<div class="carousel-caption">Newest Profile
+<div class="carousel-caption" style="color: red;">Newest Profile
 </div>
 </div>
 <li><button class="back-to-top" style="display: inline;" value="TOpdfghdthhdrhrhrdh" ></li>
-<div class="item" style="background-image: url(<%= asset_path "company.jpg" %>); width: 100%; height: 600px">
+<div class="item" style="width: 100%; height: 600px; background-repeat: no-repeat; background-size: 100%">
 <%= link_to user_profile_path(@user_last_list[2], @profile_list[2]) do %>
 	<div class="container">
                         <div class="row slide-margin">
@@ -188,7 +189,7 @@ jQuery(document).ready(function() {
                         </div>
                     </div>
 <% end %>
-<div class="carousel-caption">Newest Profile
+<div class="carousel-caption" style="color: red;">Newest Profile
 </div>
 </div>
 </div>
@@ -202,7 +203,7 @@ jQuery(document).ready(function() {
 <span class="sr-only">Next</span>
 </a>
 </div>
-<div class="container" id="point1">
+<div class="container" id="point1"><h1> New Photo Images </h1>
 <div class="section">
 <div class="row">
 <div class="col-md-3">

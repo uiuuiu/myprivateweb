@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       end
       resources :albums do
         resources :comments
+        resources :albumimages do
+          resources :albimgcoms
+        end
       end
     end
 
