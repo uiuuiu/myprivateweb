@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706031933) do
+ActiveRecord::Schema.define(version: 20150706075927) do
 
   create_table "albimgcoms", force: :cascade do |t|
-    t.integer  "album_id",   limit: 4
-    t.integer  "user_id",    limit: 4
-    t.text     "content",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "album_id",      limit: 4
+    t.integer  "user_id",       limit: 4
+    t.text     "content",       limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "albumimage_id", limit: 4
   end
 
   create_table "albumimages", force: :cascade do |t|

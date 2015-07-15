@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
    has_many :posts
    has_many :comments
+   has_many :albimgcoms
    has_many :profiles
    def to_param 
     name

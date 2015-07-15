@@ -4,7 +4,7 @@
   <strong><%=Profile.find_by_user_id(albimgcom.user_id).name %>: </strong>
   <%=h albimgcom.content %><br>
   <% if current_user.present? %>
-  <%= link_to 'Remove', user_profile_album_albimgcom_path(@user, @profile, @album, albimgcom, :format => :js),:remote => true, id: "delete", method: :delete if current_user.id == albimgcom.user_id %>
+  <%= link_to 'Remove', user_profile_album_albumimage_albimgcom_path(@this_user, @this_profile, @this_album, Albumimage.find_by_id(albimgcom.albumimage_id), albimgcom, :format => :js),:remote => true, id: "delete", method: :delete if current_user && current_user.id == albimgcom.user_id %>
   <% end %>
   <% end %>
 </div>
